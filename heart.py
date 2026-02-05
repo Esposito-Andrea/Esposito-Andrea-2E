@@ -11,10 +11,10 @@ screen.tracer(0,0)
 turtle.color("purple")
 
 def heart(alpha, d):
-    r = d/math.tan(math.radiams(180-alpha/2))
+    r = d/math.tan(math.radians(180-alpha/2))
     turtle.up()
     turtle.goto(0, -d*math.cos(math.radians(45)))
-    turtle.seth(90-(alpha-180))
+    turtle.seth(90-(alpha-180)) #changes the entire angle ofthe turtle
     turtle.down()
     turtle.begin_fill()
     turtle.fd(d)
@@ -31,5 +31,13 @@ def animate():
     global a, sign
     turtle.clear()
     heart(a, 1000)
-    screen.update()
-    a += sign
+    screen.update
+    a += sign #a = a + sign
+    if a < 215:
+        sign = -sign
+    elif a > 220:
+        sign = -sign
+    screen.ontimer(animate,50)
+
+animate()
+screen.mainloop()
